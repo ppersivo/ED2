@@ -1,6 +1,6 @@
 #include <iostream>
 
-//void addNodo(nodo &p, int valor);
+using namespace std;
 
 class nodo{
     public:
@@ -15,23 +15,41 @@ class nodo{
     nodo *next;
 };
 
+nodo* addNodo(nodo *p, int valor);
+
 int main(){
+    int y = 200;
+
     //criar lista
     nodo *lista = new nodo(0);
-    //criar nó
-    y=200;
 
     while(y>=0){
         for(int i=0; i<10000; i++){
-            addNodo(&lista,0);
+            lista = addNodo(lista,0);
         }
         y--;
     }
+/*
+    int j=0;
+
+    nodo *temp = lista;
+    while(temp->next != 0){
+        if((j>10000) && ((j%10000)==0)){
+            cout << "No: " << j << " = " << temp->info << endl;
+        }
+        j++;
+        temp = temp->next;
+    }
+*/
     //posicionar nó na cabeça da lista
     return 0;
 }
-/*
-void addNodo(nodo &p, int valor){
 
+nodo* addNodo(nodo *p, int valor){
+    nodo *novoNodo = new nodo(valor);
+
+    novoNodo->info = valor;
+    novoNodo->next = p;
+
+    return novoNodo;
 }
-*/
